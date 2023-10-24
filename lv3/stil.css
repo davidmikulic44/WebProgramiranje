@@ -1,0 +1,22 @@
+.thead-dark {
+    background-color: black;
+    color: white;
+}
+
+p:first-of-type {
+    color: red;
+    font-size: 34px;
+}
+
+.img-1 {
+    transform: scaleX(-1);
+    transform: scaleY(-1);
+}
+
+.img-2 {
+    filter: grayscale(100%);
+}
+
+.img-3 {
+    filter: invert(100%);
+}
