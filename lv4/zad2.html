@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://kit.fontawesome.com/a88ff6df1f.js" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    <title>ZAD2</title>
+</head>
+<body>
+    <h1>Validacija</h1>
+    <form id="form">
+        <button class="pozdrav" ondblclick="pozdrav()">Pozdrav</button><br><br>
+        <label for="name">Ime i prezime: </label>
+        <input type="text" id="name"><br><br>
+        <label for="tekst">Polje za ispis: </label>
+        <textarea id="mikulic" name="tekst" rows="10" cols="50"></textarea><br><br>
+        <label for="broj">Umetnite broj: </label>
+        <input type="number" name="broj" id="broj" required>
+        <i class="fas fa-bolt" aria-hidden="true" title="Uneseni broj mora biti između 1 i 10"></i>
+        <button class="kvadriraj" onclick="kvadriraj()">Kvadriraj</button><br><br>
+        <button class="kolegij" onmouseup="kolegiji()">Kolegij</button>
+        <button class="obrisi" onmouseenter="obrisi()">Obriši</button><br><br>
+        <p id="rezultat">Ovdje će se ispisati rezultat.</p><br><br>
+        <label for="email">Vaša e-mail adresa:</label>
+        <input type="text" name="email" id="email"><br><br>
+        <button onclick="provjeri()">Provjeri</button>
+    </form>
+
+    <script>
+        let form = document.getElementById("form");
+        form.addEventListener("submit", e => (
+            e.preventDefault()
+        ))
+
+
+        pozdrav = () => {
+            let counter = 5;
+            while(counter>0){
+                alert("Pozdrav! "+counter);
+                counter--;
+            }
+        }
+
+        provjeri = () => {
+            let name = document.getElementById("name").value;
+            if(!name)
+                alert("Unesi ime i prezime!");
+
+            let tekst = document.getElementById("mikulic").value;
+            if(tekst.length<=30)
+                alert("U tekstualnom području mora biti barem 30 znakova!");
+
+            let email = document.getElementById("email").value;
+            if (email.indexOf("@") > -1) {
+                let mo = email.indexOf("@")
+
+                if (mo > 2) {
+                    const subs = email.split('@').pop();
+                    if (subs.length >= 2) {
+                        const dot = subs.indexOf('.');
+
+                        if (dot > -1) {
+                            const subs2 = subs.split('.').pop();
+                            if (subs2.length >= 2) {
+                                let notifytext = "Vaše ime je " + name.split(' ')[0] + ", vaše prezime je " + name.split(' ')[1] + ", vaša email adresa: " + email;
+                                alert(notifytext);
+                            } else {
+                                alert("Netocan email");
+                            }
+                        } else {
+                            alert("Netocan email");
+                        }
+                    } else {
+                        alert("Netocan email");
+                    }
+                } else {
+                    alert("Netocan email");
+                }
+            } else {
+                alert("Netocan email");
+            }
+            
+            
+        }
+
+        kvadriraj = () => {
+            let broj = document.getElementById("broj").value;
+            console.log(broj);
+            let rezultat = document.getElementById("rezultat");
+            if(broj>10 || broj<1){
+                rezultat.innerHTML = "Broj mora biti između 1 i 10!";
+            }
+            else{
+                rezultat.innerHTML = broj*broj;
+            }
+        }
+
+        kolegiji = () => {
+            let kolegiji = ["Web programiranje",
+                            "Digitalne komunikacije",
+                            "Osnove elektronike",
+                            "Matematika 2",
+                            "Programsko inzinjerstvo",
+                            "Matematika 1",
+                            "Fizika",
+                            "Inzinjerska grafika"
+                            ];
+            for(var broj_kolegija in kolegiji) { 
+                document.getElementById("mikulic").value+=("Kolegij broj [" + broj_kolegija); 
+                document.getElementById("mikulic").value+=("]: "+ kolegiji[broj_kolegija] + "\n") 
+            }
+        }
+
+        obrisi = () => {
+            document.getElementById("mikulic").value="";
+        }
+
+    </script>
+</body>
+</html>
