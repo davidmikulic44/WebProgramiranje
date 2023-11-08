@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        fetch('primjer.json')
+            .then((response)=>response.json())
+            .then((data)=>{
+                console.log(data);
+                data[1] = {
+                    "ime": "David Mikulić",
+                    "godina": 21,
+                    "redStudent": true,
+                    "najdraziKolegiji": ["Kolegij_1", "Kolegij_2"]
+                };
+                
+                const noviJSON = JSON.stringify(data, null, 2);
+
+                const noviJSONBlob = new Blob([noviJSON], { type: 'application/json' });
+                const noviJSONUrl = URL.createObjectURL(noviJSONBlob);
+
+                const a = document.createElement('a');
+                a.href = noviJSONUrl;
+                a.download = 'novi_primjer.json';
+                a.click();
+            });
+    </script>
+</body>
+</html>

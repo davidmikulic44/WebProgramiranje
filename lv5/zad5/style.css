@@ -1,0 +1,25 @@
+.draggable {
+    width: 75px;
+    height: 75px;
+}
+
+#kocka1 {
+    background-color: red;
+}
+
+#kocka2 {
+    background-color: black;
+}
+
+.cilj {
+    width: 120px;
+    height: 120px;
+    background-color: transparent;
+    border: 2px solid #000;
+}
+
+.cilj-container {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}

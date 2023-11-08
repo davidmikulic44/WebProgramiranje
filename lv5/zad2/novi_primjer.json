@@ -1,0 +1,21 @@
+[
+  {
+    "ime": "Marko",
+    "godina": 22,
+    "redStudent": true,
+    "najdraziKolegiji": [
+      "Fizika",
+      "Matematika",
+      "Web programiranje"
+    ]
+  },
+  {
+    "ime": "David Mikulić",
+    "godina": 21,
+    "redStudent": true,
+    "najdraziKolegiji": [
+      "Kolegij_1",
+      "Kolegij_2"
+    ]
+  }
+]
